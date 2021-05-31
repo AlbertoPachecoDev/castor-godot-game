@@ -1,0 +1,79 @@
+[gd_scene load_steps=10 format=2]
+
+[ext_resource path="res://art/rocks.png" type="Texture" id=1]
+[ext_resource path="res://sound/point.mp3" type="AudioStream" id=2]
+[ext_resource path="res://Nivel1.gd" type="Script" id=4]
+[ext_resource path="res://art/fondo_juego.png" type="Texture" id=9]
+[ext_resource path="res://tree2.gd" type="Script" id=10]
+[ext_resource path="res://sky.tscn" type="PackedScene" id=20]
+[ext_resource path="res://tree.tscn" type="PackedScene" id=21]
+[ext_resource path="res://player.tscn" type="PackedScene" id=22]
+[ext_resource path="res://platform.tscn" type="PackedScene" id=23]
+
+[node name="Nivel1" type="Node2D"]
+position = Vector2( -1, 0 )
+script = ExtResource( 4 )
+
+[node name="sky" parent="." instance=ExtResource( 20 )]
+
+[node name="school" type="TextureRect" parent="."]
+self_modulate = Color( 0.8, 0.784, 0.794667, 1 )
+margin_right = 1024.0
+margin_bottom = 440.0
+texture = ExtResource( 9 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="tree1" parent="." instance=ExtResource( 21 )]
+position = Vector2( -2.94312, 0.735779 )
+
+[node name="tree2" parent="." instance=ExtResource( 21 )]
+modulate = Color( 0.776471, 0.74902, 0.666667, 1 )
+position = Vector2( -781.005, 7.00462 )
+script = ExtResource( 10 )
+
+[node name="hoyo" type="TextureRect" parent="."]
+self_modulate = Color( 0.211765, 0.121569, 0.0784314, 0.698039 )
+margin_left = 434.719
+margin_top = 444.719
+margin_right = 690.719
+margin_bottom = 788.719
+rect_scale = Vector2( 0.5, 0.5 )
+texture = ExtResource( 1 )
+stretch_mode = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="food_container" type="Node" parent="."]
+
+[node name="food" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 2 )
+volume_db = -16.0
+mix_target = 2
+
+[node name="food_timer" type="Timer" parent="."]
+one_shot = true
+
+[node name="piso1" parent="." instance=ExtResource( 23 )]
+visible = false
+position = Vector2( -601.115, -77.0196 )
+rotation = 0.785398
+
+[node name="piso2" parent="." instance=ExtResource( 23 )]
+position = Vector2( -335.532, 489.98 )
+rotation = 0.0174533
+
+[node name="piso3" parent="." instance=ExtResource( 23 )]
+visible = false
+position = Vector2( 1136.28, 392.345 )
+rotation = -0.785398
+
+[node name="piso4" parent="." instance=ExtResource( 23 )]
+position = Vector2( 664.53, 500.496 )
+rotation = -0.0261799
+
+[node name="player" parent="." instance=ExtResource( 22 )]
+
+[connection signal="timeout" from="food_timer" to="." method="_on_food_timer_timeout"]

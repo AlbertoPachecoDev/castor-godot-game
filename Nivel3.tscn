@@ -1,0 +1,73 @@
+[gd_scene load_steps=10 format=2]
+
+[ext_resource path="res://player.tscn" type="PackedScene" id=1]
+[ext_resource path="res://Nivel3.gd" type="Script" id=2]
+[ext_resource path="res://sound/point.mp3" type="AudioStream" id=3]
+[ext_resource path="res://art/nivel3dia.png" type="Texture" id=4]
+[ext_resource path="res://platform.tscn" type="PackedScene" id=6]
+[ext_resource path="res://tree.tscn" type="PackedScene" id=7]
+[ext_resource path="res://sky.tscn" type="PackedScene" id=8]
+[ext_resource path="res://art/rocks.png" type="Texture" id=9]
+[ext_resource path="res://tree2.gd" type="Script" id=11]
+
+[node name="Nivel3" type="Node2D"]
+position = Vector2( -1, 0 )
+script = ExtResource( 2 )
+
+[node name="sky" parent="." instance=ExtResource( 8 )]
+
+[node name="school" type="TextureRect" parent="."]
+self_modulate = Color( 0.8, 0.784, 0.794667, 1 )
+margin_right = 1024.0
+margin_bottom = 440.0
+texture = ExtResource( 4 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="tree1" parent="." instance=ExtResource( 7 )]
+
+[node name="tree2" parent="." instance=ExtResource( 7 )]
+modulate = Color( 0.776471, 0.74902, 0.666667, 1 )
+position = Vector2( -781.005, 7.00462 )
+script = ExtResource( 11 )
+
+[node name="hoyo" type="TextureRect" parent="."]
+self_modulate = Color( 0.211765, 0.121569, 0.0784314, 0.698039 )
+margin_left = 434.719
+margin_top = 444.719
+margin_right = 690.719
+margin_bottom = 788.719
+rect_scale = Vector2( 0.5, 0.5 )
+texture = ExtResource( 9 )
+stretch_mode = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="food_container" type="Node" parent="."]
+
+[node name="food" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 3 )
+volume_db = -16.0
+mix_target = 2
+
+[node name="food_timer" type="Timer" parent="."]
+one_shot = true
+
+[node name="seed_timer" type="Timer" parent="."]
+wait_time = 2.0
+autostart = true
+
+[node name="piso2" parent="." instance=ExtResource( 6 )]
+position = Vector2( -355, 522 )
+rotation = -0.0523599
+
+[node name="piso4" parent="." instance=ExtResource( 6 )]
+position = Vector2( 656, 494 )
+rotation = 0.0698132
+
+[node name="player" parent="." instance=ExtResource( 1 )]
+
+[connection signal="timeout" from="food_timer" to="." method="_on_food_timer_timeout"]
+[connection signal="timeout" from="seed_timer" to="." method="_on_seed_timer_timeout"]
