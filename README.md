@@ -1,4 +1,4 @@
-# castor-godot-game
+# Castor Godot Game
 
 Didactic Godot 2D Game.
 
