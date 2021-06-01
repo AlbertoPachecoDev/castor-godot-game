@@ -16,6 +16,10 @@ Game objective: survive and collect as much nuts as possible across each level.
 
 Game development is still work in progress...
 
+[Video: Game demo](https://youtu.be/6aCanEZozEE) 
+
+[Castor Game ported to Unity](https://github.com/Platqr/CastoresUnityPort)
+
 ----
 
 Authors:
