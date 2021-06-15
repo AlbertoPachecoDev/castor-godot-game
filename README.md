@@ -27,3 +27,5 @@ Authors:
 - Miguel Angel Bui (sounds and music, Unity porting, level 5)
 - Luis Carlos Parra (design, graphics, objects and scenarios)
 - Bernardo Borunda (objects and desing)
+
+![Splashscreen](/splash1024png.png)
